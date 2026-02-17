@@ -267,6 +267,60 @@ curl -X POST http://127.0.0.1:8000/api/profiles \
   -F "image=@/chemin/vers/image.jpg"
 ```
 
+### Lancer les tests unitaires
+```bash
+# Tous les tests
+php artisan test
+
+# Tests avec détails
+php artisan test --testdox
+
+# Tests spécifiques
+php artisan test tests/Feature/AuthTest.php
+php artisan test tests/Feature/ProfileTest.php
+```
+
+### Tests implémentés
+
+Le projet inclut **13 tests unitaires** couvrant toutes les fonctionnalités principales.
+
+**Tests d'authentification (AuthTest) :**
+- Connexion avec identifiants valides
+- Connexion avec identifiants invalides
+- Validation des champs requis
+
+**Tests de profils (ProfileTest) :**
+- Listing des profils actifs uniquement
+- Vérification que le champ statut n'est pas retourné sur l'endpoint public
+- Création de profil (avec/sans authentification)
+- Validation des données (nom requis, statut valide)
+- Affichage d'un profil avec son statut
+- Modification d'un profil
+- Suppression d'un profil
+
+### Résultat des tests
+```
+PASS  Tests\Feature\AuthTest
+✓ login with valid credentials
+✓ login with invalid credentials
+✓ login requires email
+✓ logout 
+
+PASS  Tests\Feature\ProfileTest
+✓ list only active profiles
+✓ public endpoint does not return status
+✓ create profile requires authentication
+✓ create profile with authentication
+✓ profile creation requires nom
+✓ profile creation rejects invalid status
+✓ show profile with status
+✓ update profile
+✓ delete profile
+
+Tests:  13 passed
+```
+
+
 ## Structure du projet
 
 ```
