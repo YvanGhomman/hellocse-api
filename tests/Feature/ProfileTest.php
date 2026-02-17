@@ -254,6 +254,7 @@ class ProfileTest extends TestCase
             'statut' => Profile::STATUT_ACTIF,
         ]);
 
+        
         $response = $this->withHeaders([
             'Authorization' => 'Bearer ' . $token,
             'Accept' => 'application/json',

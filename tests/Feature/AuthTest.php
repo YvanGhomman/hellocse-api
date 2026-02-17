@@ -86,6 +86,7 @@ class AuthTest extends TestCase
             'password' => Hash::make('password'),
         ]);
 
+        
         $token = $admin->createToken('test-token')->plainTextToken;
 
         // Se déconnecter
